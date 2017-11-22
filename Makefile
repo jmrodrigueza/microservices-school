@@ -3,6 +3,7 @@ lint:
 
 qa:
 	@make lint && npm run test
+	@docker run --name $(SERVICE) --env SERVICE_ENV=build --rm --network=local --entrypoint npm $(SERVICE):$(TRAVIS_BUILD_NUMBER) run qa --
 
 brand:
 	@node_modules/make-manifest/bin/make-manifest --extra "build.url: https://travis-ci.org/jmrodrigueza/microservices-school/builds/"$(TRAVIS_BUILD_ID) --extra "build.number: "$(TRAVIS_BUILD_NUMBER)
