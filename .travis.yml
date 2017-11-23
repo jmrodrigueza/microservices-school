@@ -15,9 +15,9 @@ before_script:
 - SERVICE=$SERVICE make ensure-dependencies
 - sleep 10
 script:
+- make qa
 - make brand
 - make package
-- make qa
 
 matrix:
   include:
